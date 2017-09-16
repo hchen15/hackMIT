@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A61918B71F6DBFBA009D9AD3 /* FileExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61918B61F6DBFBA009D9AD3 /* FileExtractor.swift */; };
 		A68708931F6DA20A00C57C9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68708921F6DA20A00C57C9B /* AppDelegate.swift */; };
 		A68708951F6DA20A00C57C9B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68708941F6DA20A00C57C9B /* ViewController.swift */; };
 		A68708981F6DA20A00C57C9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A68708961F6DA20A00C57C9B /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A61918B61F6DBFBA009D9AD3 /* FileExtractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileExtractor.swift; sourceTree = "<group>"; };
 		A687088F1F6DA20A00C57C9B /* hackMIT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackMIT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68708921F6DA20A00C57C9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A68708941F6DA20A00C57C9B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +49,7 @@
 		A68708AE1F6DA20A00C57C9B /* hackMITUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hackMITUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68708B21F6DA20A00C57C9B /* hackMITUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hackMITUITests.swift; sourceTree = "<group>"; };
 		A68708B41F6DA20A00C57C9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A68708C11F6DA77300C57C9B /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +84,7 @@
 				A68708A61F6DA20A00C57C9B /* hackMITTests */,
 				A68708B11F6DA20A00C57C9B /* hackMITUITests */,
 				A68708901F6DA20A00C57C9B /* Products */,
+				A68708C01F6DA77300C57C9B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +101,7 @@
 		A68708911F6DA20A00C57C9B /* hackMIT */ = {
 			isa = PBXGroup;
 			children = (
+				A61918B61F6DBFBA009D9AD3 /* FileExtractor.swift */,
 				A68708921F6DA20A00C57C9B /* AppDelegate.swift */,
 				A68708941F6DA20A00C57C9B /* ViewController.swift */,
 				A68708961F6DA20A00C57C9B /* Main.storyboard */,
@@ -123,6 +128,14 @@
 				A68708B41F6DA20A00C57C9B /* Info.plist */,
 			);
 			path = hackMITUITests;
+			sourceTree = "<group>";
+		};
+		A68708C01F6DA77300C57C9B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A68708C11F6DA77300C57C9B /* MobileCoreServices.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +206,7 @@
 				TargetAttributes = {
 					A687088E1F6DA20A00C57C9B = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = K49GA3868H;
 						ProvisioningStyle = Automatic;
 					};
 					A68708A21F6DA20A00C57C9B = {
@@ -259,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A61918B71F6DBFBA009D9AD3 /* FileExtractor.swift in Sources */,
 				A68708951F6DA20A00C57C9B /* ViewController.swift in Sources */,
 				A68708931F6DA20A00C57C9B /* AppDelegate.swift in Sources */,
 			);
@@ -414,6 +429,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = K49GA3868H;
 				INFOPLIST_FILE = hackMIT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hackmit.com.hackMIT;
@@ -426,6 +442,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = K49GA3868H;
 				INFOPLIST_FILE = hackMIT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hackmit.com.hackMIT;
@@ -507,6 +524,7 @@
 				A68708B91F6DA20A00C57C9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A68708BA1F6DA20A00C57C9B /* Build configuration list for PBXNativeTarget "hackMITTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +533,7 @@
 				A68708BC1F6DA20A00C57C9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A68708BD1F6DA20A00C57C9B /* Build configuration list for PBXNativeTarget "hackMITUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +542,7 @@
 				A68708BF1F6DA20A00C57C9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
