@@ -7,15 +7,28 @@
 //
 
 import UIKit
+import SwiftyJSON
+
+var foodName = ""
 
 class ViewController: UIViewController, FrameExtractorDelegate{
     var frameExtractor: FrameExtractor!
     
+    
     @IBOutlet weak var bottomText: UILabel!
+    @IBAction func testSwitchScreens(_ sender: UIButton) {
+        performSegue(withIdentifier: "segue", sender: self)
+    }
     @IBOutlet weak var imageView: UIImageView!
+
+    
+    @IBOutlet weak var photoImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tapGestureREcognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(tapGestureREcognizer)
         frameExtractor = FrameExtractor()
         frameExtractor.delegate = self
     }
@@ -26,50 +39,12 @@ class ViewController: UIViewController, FrameExtractorDelegate{
     }
     func captured(image: UIImage) {
         imageView.image = image
-//        imageView.image = textToImage(drawText: "Test", inImage: image, atPoint: CGPoint(x: 50, y: 50))
         
     }
     
-//    func textToImage(drawText text: NSString, inImage image: UIImage, atPoint point: CGPoint) -> UIImage {
-//        let textColor = UIColor.white
-//        let textFont = UIFont(name: "Helvetica Bold", size: 12)!
-//        
-//        let scale = UIScreen.main.scale
-//        UIGraphicsBeginImageContextWithOptions(image.size, false, scale)
-//        
-//        let textFontAttributes = [
-//            NSFontAttributeName: textFont,
-//            NSForegroundColorAttributeName: textColor,
-//            ] as [String : Any]
-//        image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
-//        
-//        let rect = CGRect(origin: point, size: image.size)
-//        text.draw(in: rect, withAttributes: textFontAttributes)
-//        
-//        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
-//        
-//        return newImage!
-//    }
-    
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        var touchPoint = touches.first as! UITouch
-//        var screenSize = imageView.bounds.size
-//        var focusPoint = CGPoint(x: touchPoint.locationInView(videoView).y / screenSize.height, y: 1.0 - touchPoint.locationInView(videoView.x / screenSize.width)
-//        
-//        if let device = cameraDevice {
-//            if(device.lockForConfiguration(nil)) {
-//                if device.focusPointOfInterestSupported {
-//                    device.focusPointOfInterest = focusPoint
-//                    device.focusMode = AVCaptureFocusMode.AutoFocus
-//                }
-//                if device.exposurePointOfInterestSupported {
-//                    device.exposurePointOfInterest = focusPoint
-//                    device.exposureMode = AVCaptureExposureMode.AutoExpose
-//                }
-//                device.unlockForConfiguration()
-//            }
-//        }
-//    }
+    func imageTapped(tapGestureRecognizer: UITapGestureRecognizer){
+        let tappedImage = tapGestureRecognizer.view as! UIImageView
+        frameExtractor.touched()
+    }
 }
 

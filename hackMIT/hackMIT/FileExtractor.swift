@@ -8,12 +8,13 @@
 
 import AVFoundation
 import UIKit
+import TesseractOCR
 
 protocol FrameExtractorDelegate: class {
     func captured(image: UIImage)
 }
 
-class FrameExtractor: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate{
+class FrameExtractor: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, G8TesseractDelegate{
     weak var delegate: FrameExtractorDelegate?
     
     private let captureSession = AVCaptureSession()
@@ -22,9 +23,20 @@ class FrameExtractor: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate{
     private let position = AVCaptureDevicePosition.back
     private let quality = AVCaptureSessionPresetMedium
     private let context = CIContext()
+    private var isTouched = false
+    
+    let tesseract = G8Tesseract(language: "eng")
+    
+    
+    
     
     override init() {
         super.init()
+        
+        if(tesseract != nil){
+            tesseract?.delegate = self
+        }
+        
         checkPermission()
         sessionQueue.async { [unowned self] in
             self.configureSession()
@@ -80,6 +92,19 @@ class FrameExtractor: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate{
     
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, from connection: AVCaptureConnection!) {
         guard let uiImage = imageFromSampleBuffer(sampleBuffer: sampleBuffer) else { return }
+        
+        if isTouched {
+            isTouched = false
+            tesseract?.image = uiImage.g8_blackAndWhite()
+            tesseract?.recognize()
+            var newText = tesseract!.recognizedText
+            
+            newText = stringOps.lowercase(myString: newText!)
+            newText = stringOps.onlyLetters(myString: newText!)
+            foodName = newText!
+            
+        }
+        
         DispatchQueue.main.async { [unowned self] in
             self.delegate?.captured(image: uiImage)
         }
@@ -90,6 +115,10 @@ class FrameExtractor: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate{
         let ciImage = CIImage(cvPixelBuffer: imageBuffer)
         guard let cgImage = context.createCGImage(ciImage, from: ciImage.extent) else { return nil }
         return UIImage(cgImage: cgImage)
+    }
+    
+    func touched(){
+        isTouched = true
     }
     
 }
