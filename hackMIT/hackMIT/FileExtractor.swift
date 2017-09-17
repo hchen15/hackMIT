@@ -57,6 +57,7 @@ class FrameExtractor: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate{
         guard permissionGranted else { return }
         captureSession.sessionPreset = quality
         guard let captureDevice = selectCaptureDevice() else { return }
+        //^ device
         guard let captureDeviceInput = try? AVCaptureDeviceInput(device: captureDevice) else { return }
         guard captureSession.canAddInput(captureDeviceInput) else { return }
         captureSession.addInput(captureDeviceInput)
